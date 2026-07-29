@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Attractor Production AI Checklist",
+  "version": "0.1.0",
+  "description": "Evidence-based controls for moving an AI feature from prototype to production.",
+  "controls": [
+    {
+      "id": "outcomes-user-need",
+      "title": "Defined user need and outcome",
+      "category": "outcomes",
+      "description": "The feature solves a specific user problem with a measurable outcome.",
+      "level": "prototype",
+      "required": true,
+      "guidance": "Name the user, decision or task, current baseline, intended change, and explicit non-goals.",
+      "evidenceExamples": ["Approved AI feature brief", "Baseline and target metric"]
+    },
+    {
+      "id": "outcomes-human-fallback",
+      "title": "Human fallback and boundaries",
+      "category": "outcomes",
+      "description": "Users know the feature's limits and have a safe path when it cannot help.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Define abstention, escalation, override, and user-facing disclosure behavior.",
+      "evidenceExamples": ["Fallback flow test", "Product copy review"]
+    },
+    {
+      "id": "data-provenance",
+      "title": "Data provenance and permission",
+      "category": "data",
+      "description": "Training, evaluation, retrieval, and prompt data have known sources and permitted uses.",
+      "level": "prototype",
+      "required": true,
+      "guidance": "Record source, license or lawful basis, permitted purpose, retention, and material limitations.",
+      "evidenceExamples": ["Data inventory", "License or permission record"]
+    },
+    {
+      "id": "data-quality",
+      "title": "Representative data quality checks",
+      "category": "data",
+      "description": "Data quality and coverage are measured against relevant production traffic.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Check missingness, duplication, freshness, language, segments, and known blind spots.",
+      "evidenceExamples": ["Data quality report", "Segment coverage review"]
+    },
+    {
+      "id": "evaluations-success-criteria",
+      "title": "Evaluation success criteria",
+      "category": "evaluations",
+      "description": "Quality dimensions, datasets, metrics, thresholds, and regressions are defined before launch.",
+      "level": "prototype",
+      "required": true,
+      "guidance": "Include task quality, harmful failure modes, important slices, and baseline comparison.",
+      "evidenceExamples": ["Evaluation plan", "Versioned evaluation dataset"]
+    },
+    {
+      "id": "evaluations-ci-gate",
+      "title": "Automated regression gate",
+      "category": "evaluations",
+      "description": "Changes run repeatable evaluations with explicit release thresholds.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Pin inputs and scorer versions, surface case-level failures, and block material regression.",
+      "evidenceExamples": ["CI evaluation report", "Regression threshold configuration"]
+    },
+    {
+      "id": "evaluations-production-sampling",
+      "title": "Production quality sampling",
+      "category": "evaluations",
+      "description": "A privacy-safe sample of real interactions is reviewed for emerging failures.",
+      "level": "production",
+      "required": true,
+      "guidance": "Define sampling, redaction, reviewer calibration, cadence, and issue routing.",
+      "evidenceExamples": ["Sampling procedure", "Completed quality review"]
+    },
+    {
+      "id": "security-threat-model",
+      "title": "AI threat model",
+      "category": "security",
+      "description": "Threats from untrusted inputs, tools, data sources, and generated outputs are documented.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Cover prompt injection, data exfiltration, insecure output use, abuse, and supply-chain risk.",
+      "evidenceExamples": ["Threat model", "Abuse case test results"]
+    },
+    {
+      "id": "security-tool-boundaries",
+      "title": "Least-privilege tool boundaries",
+      "category": "security",
+      "description": "Model-triggered tools and actions use explicit authorization and minimum privileges.",
+      "level": "production",
+      "required": true,
+      "guidance": "Validate parameters, separate tenants, require confirmation for consequential actions, and log decisions.",
+      "evidenceExamples": ["Authorization tests", "Tool permission matrix"]
+    },
+    {
+      "id": "privacy-data-flow",
+      "title": "Personal data flow and retention",
+      "category": "privacy",
+      "description": "Personal and sensitive data flows, processors, retention, and deletion are understood.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Minimize collection and document prompts, logs, caches, vendors, residency, retention, and deletion.",
+      "evidenceExamples": ["Data flow diagram", "Privacy review"]
+    },
+    {
+      "id": "privacy-user-controls",
+      "title": "User transparency and controls",
+      "category": "privacy",
+      "description": "Users receive appropriate notice and can exercise relevant data choices.",
+      "level": "production",
+      "required": true,
+      "guidance": "Review disclosure, consent or lawful basis, access, correction, deletion, and opt-out paths.",
+      "evidenceExamples": ["Approved privacy notice", "Data subject request test"]
+    },
+    {
+      "id": "reliability-timeouts",
+      "title": "Timeouts, retries, and degradation",
+      "category": "reliability",
+      "description": "External failures have bounded latency, safe retries, and a tested degraded mode.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Set end-to-end timeouts, retry only safe operations, prevent retry storms, and test fallback.",
+      "evidenceExamples": ["Failure-mode test", "Timeout and retry configuration"]
+    },
+    {
+      "id": "reliability-capacity",
+      "title": "Capacity and dependency limits",
+      "category": "reliability",
+      "description": "Traffic, quotas, concurrency, and provider limits are tested against expected load.",
+      "level": "production",
+      "required": true,
+      "guidance": "Document load assumptions, rate limits, circuit breakers, and provider outage behavior.",
+      "evidenceExamples": ["Load test report", "Capacity plan"]
+    },
+    {
+      "id": "observability-traces",
+      "title": "Privacy-safe AI traces",
+      "category": "observability",
+      "description": "Operators can connect user outcomes to versions, retrieval, model calls, latency, and cost.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Capture correlation IDs and version metadata while redacting secrets and unnecessary personal data.",
+      "evidenceExamples": ["Example redacted trace", "Telemetry data dictionary"]
+    },
+    {
+      "id": "observability-alerts",
+      "title": "Service and quality alerts",
+      "category": "observability",
+      "description": "Alerts cover availability, latency, errors, spend, and important quality signals.",
+      "level": "production",
+      "required": true,
+      "guidance": "Make alerts actionable, owned, tested, and linked to a runbook.",
+      "evidenceExamples": ["Alert definitions", "Alert drill record"]
+    },
+    {
+      "id": "cost-unit-economics",
+      "title": "Unit economics and budget",
+      "category": "cost",
+      "description": "Expected and worst-case costs are measured per useful user outcome.",
+      "level": "pilot",
+      "required": true,
+      "guidance": "Include model, retrieval, infrastructure, retries, review labor, and traffic growth.",
+      "evidenceExamples": ["Cost model", "Per-request cost benchmark"]
+    },
+    {
+      "id": "cost-guardrails",
+      "title": "Spend guardrails",
+      "category": "cost",
+      "description": "Unexpected use or loops cannot create unbounded spend.",
+      "level": "production",
+      "required": true,
+      "guidance": "Set request, tenant, and global budgets with alerts and graceful limits.",
+      "evidenceExamples": ["Budget alert test", "Quota configuration"]
+    },
+    {
+      "id": "launch-review",
+      "title": "Cross-functional launch review",
+      "category": "launch",
+      "description": "Product, engineering, security, privacy, and operations accept residual risks.",
+      "level": "production",
+      "required": true,
+      "guidance": "Record open risks, mitigations, owners, due dates, rollout stages, and rollback criteria.",
+      "evidenceExamples": ["Signed launch review", "Rollout and rollback plan"]
+    },
+    {
+      "id": "incident-runbook",
+      "title": "AI incident runbook",
+      "category": "incident-readiness",
+      "description": "Responders can contain harmful output, data exposure, abuse, dependency failure, and runaway cost.",
+      "level": "production",
+      "required": true,
+      "guidance": "Include detection, severity, containment, evidence preservation, communication, and recovery.",
+      "evidenceExamples": ["Incident runbook", "Tabletop exercise notes"]
+    },
+    {
+      "id": "incident-ownership",
+      "title": "Operational ownership",
+      "category": "incident-readiness",
+      "description": "Named teams own service health, quality, data, security, cost, and decommissioning.",
+      "level": "production",
+      "required": true,
+      "guidance": "Document primary and backup owners, escalation paths, review cadence, and lifecycle decisions.",
+      "evidenceExamples": ["Ownership matrix", "On-call schedule"]
+    }
+  ]
+}

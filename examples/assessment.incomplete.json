@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "checklistVersion": "0.1.0",
+  "feature": {
+    "name": "Unreviewed answer bot",
+    "description": "A production assessment intentionally missing release evidence.",
+    "owner": "Example Team",
+    "maturity": "production"
+  },
+  "assessedAt": "2026-07-29",
+  "controls": [
+    {
+      "id": "outcomes-user-need",
+      "status": "partial",
+      "evidence": [],
+      "owner": "Product",
+      "rationale": "The target metric has not yet been agreed.",
+      "reviewDate": "2026-08-15"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "1.0",
+  "checklistVersion": "0.1.0",
+  "feature": {
+    "name": "Support answer assistant",
+    "description": "Drafts grounded answers for support agents and always requires agent approval.",
+    "owner": "Customer Support Engineering",
+    "maturity": "production"
+  },
+  "assessedAt": "2026-07-29",
+  "controls": [
+    {
+      "id": "outcomes-user-need",
+      "status": "pass",
+      "evidence": [{"label": "Feature brief", "uri": "../templates/ai-feature-brief.md"}],
+      "owner": "Product",
+      "rationale": "The assisted-resolution outcome and non-goals are approved.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "outcomes-human-fallback",
+      "status": "pass",
+      "evidence": [{"label": "Launch review", "uri": "../templates/launch-review.md"}],
+      "owner": "Support Operations",
+      "rationale": "Agents approve every draft and can use the existing manual workflow.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "data-provenance",
+      "status": "pass",
+      "evidence": [{"label": "System card", "uri": "../templates/system-card.md"}],
+      "owner": "Data",
+      "rationale": "Only approved support documents and synthetic evaluation data are used.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "data-quality",
+      "status": "pass",
+      "evidence": [{"label": "Evaluation plan", "uri": "../templates/evaluation-plan.md"}],
+      "owner": "Data",
+      "rationale": "Coverage, freshness, language, and duplicate checks run before publishing.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "evaluations-success-criteria",
+      "status": "pass",
+      "evidence": [{"label": "Evaluation plan", "uri": "../templates/evaluation-plan.md"}],
+      "owner": "AI Engineering",
+      "rationale": "Grounding, citation, refusal, and latency thresholds are versioned.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "evaluations-ci-gate",
+      "status": "pass",
+      "evidence": [{"label": "CI definition", "uri": "../.github/workflows/quality.yml"}],
+      "owner": "AI Engineering",
+      "rationale": "Recorded evaluation cases block changes below the agreed threshold.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "evaluations-production-sampling",
+      "status": "pass",
+      "evidence": [{"label": "System card", "uri": "../templates/system-card.md"}],
+      "owner": "Quality",
+      "rationale": "A redacted sample is reviewed weekly with calibrated labels.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "security-threat-model",
+      "status": "pass",
+      "evidence": [{"label": "System card", "uri": "../templates/system-card.md"}],
+      "owner": "Security",
+      "rationale": "Injection, exfiltration, abuse, and unsafe rendering have tests.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "security-tool-boundaries",
+      "status": "pass",
+      "evidence": [{"label": "Launch review", "uri": "../templates/launch-review.md"}],
+      "owner": "Security",
+      "rationale": "The feature can only read tenant-scoped documents and create drafts.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "privacy-data-flow",
+      "status": "pass",
+      "evidence": [{"label": "System card", "uri": "../templates/system-card.md"}],
+      "owner": "Privacy",
+      "rationale": "Processors, prompt data, logs, retention, and deletion are documented.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "privacy-user-controls",
+      "status": "pass",
+      "evidence": [{"label": "Feature brief", "uri": "../templates/ai-feature-brief.md"}],
+      "owner": "Privacy",
+      "rationale": "The user notice and applicable access and deletion flows are approved.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "reliability-timeouts",
+      "status": "pass",
+      "evidence": [{"label": "Incident runbook", "uri": "../templates/incident-runbook.md"}],
+      "owner": "Platform",
+      "rationale": "Timeouts, bounded retries, and the manual fallback have been tested.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "reliability-capacity",
+      "status": "pass",
+      "evidence": [{"label": "Launch review", "uri": "../templates/launch-review.md"}],
+      "owner": "Platform",
+      "rationale": "Load, provider quotas, and outage behavior meet launch assumptions.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "observability-traces",
+      "status": "pass",
+      "evidence": [{"label": "System card", "uri": "../templates/system-card.md"}],
+      "owner": "Platform",
+      "rationale": "Redacted traces join versions, retrieval, latency, cost, and outcomes.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "observability-alerts",
+      "status": "pass",
+      "evidence": [{"label": "Incident runbook", "uri": "../templates/incident-runbook.md"}],
+      "owner": "Operations",
+      "rationale": "Service, quality, latency, and spend alerts route to named responders.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "cost-unit-economics",
+      "status": "pass",
+      "evidence": [{"label": "Launch review", "uri": "../templates/launch-review.md"}],
+      "owner": "Product",
+      "rationale": "Unit costs include successful requests, retries, and review labor.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "cost-guardrails",
+      "status": "pass",
+      "evidence": [{"label": "Incident runbook", "uri": "../templates/incident-runbook.md"}],
+      "owner": "Platform",
+      "rationale": "Tenant quotas and global budgets alert and degrade safely.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "launch-review",
+      "status": "pass",
+      "evidence": [{"label": "Launch review", "uri": "../templates/launch-review.md"}],
+      "owner": "Product",
+      "rationale": "Owners accepted residual risks, staged rollout, and rollback criteria.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "incident-runbook",
+      "status": "pass",
+      "evidence": [{"label": "Incident runbook", "uri": "../templates/incident-runbook.md"}],
+      "owner": "Operations",
+      "rationale": "Responders rehearsed containment for quality, privacy, outage, and cost events.",
+      "reviewDate": "2026-10-01"
+    },
+    {
+      "id": "incident-ownership",
+      "status": "pass",
+      "evidence": [{"label": "Incident runbook", "uri": "../templates/incident-runbook.md"}],
+      "owner": "Engineering",
+      "rationale": "Primary and backup owners cover service, quality, data, security, and cost.",
+      "reviewDate": "2026-10-01"
+    }
+  ]
+}

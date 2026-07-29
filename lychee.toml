@@ -1,0 +1,5 @@
+exclude_mail = true
+exclude = [
+  '^https://attractor\.fi/schemas/',
+  '^https://github\.com/attractorhq/production-ai-checklist/(discussions|security/advisories/new)$'
+]

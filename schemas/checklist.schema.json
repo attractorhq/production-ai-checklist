@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://attractor.fi/schemas/production-ai-checklist/checklist/v1.json",
+  "title": "Production AI checklist definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "name", "version", "controls"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/control"
+      }
+    }
+  },
+  "$defs": {
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "category",
+        "description",
+        "level",
+        "required",
+        "guidance",
+        "evidenceExamples"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "outcomes",
+            "data",
+            "evaluations",
+            "security",
+            "privacy",
+            "reliability",
+            "observability",
+            "cost",
+            "launch",
+            "incident-readiness"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": ["prototype", "pilot", "production"]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "guidance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceExamples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

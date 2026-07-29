@@ -1,0 +1,23 @@
+name: Checklist improvement
+description: Propose a control, template, schema, or CLI improvement
+title: "[Proposal]: "
+labels: [enhancement, triage]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Production need
+      description: What concrete risk or workflow gap should this address?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Share production experience or public references where possible.
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true

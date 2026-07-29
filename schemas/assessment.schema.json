@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://attractor.fi/schemas/production-ai-checklist/assessment/v1.json",
+  "title": "Production AI readiness assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "checklistVersion", "feature", "assessedAt", "controls"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "checklistVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description", "owner", "maturity"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "description": {"type": "string", "minLength": 1},
+        "owner": {"type": "string", "minLength": 1},
+        "maturity": {"enum": ["prototype", "pilot", "production"]}
+      }
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "controls": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/result"}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "uri"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "uri": {"type": "string", "minLength": 1}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "evidence", "owner", "rationale", "reviewDate"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "status": {
+          "enum": ["pass", "partial", "fail", "not_applicable"]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/evidence"}
+        },
+        "owner": {"type": "string", "minLength": 1},
+        "rationale": {"type": "string", "minLength": 1},
+        "reviewDate": {"type": "string", "format": "date"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"status": {"const": "pass"}},
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {"evidence": {"type": "array", "minItems": 1}}
+          }
+        },
+        {
+          "if": {
+            "properties": {"status": {"const": "not_applicable"}},
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {"rationale": {"type": "string", "minLength": 10}}
+          }
+        }
+      ]
+    }
+  }
+}
